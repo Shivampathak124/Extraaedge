@@ -1,0 +1,86 @@
+/* Set the font color for the entire application */
+body {
+  color: white;
+}
+
+/* Ensure specific elements have black text */
+.user-profile {
+  color: black;
+}
+
+.user-profile h2 {
+  color: black;
+}
+
+.user-profile p {
+  color: black;
+}
+
+.user-profile a {
+  color: #007bff;
+  /* Blue for links */
+  text-decoration: none;
+}
+
+.user-profile a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+  /* Darker blue for hover effect */
+}
+
+
+
+.app-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.user-profiles {
+  display: grid;
+  /* Enables grid layout */
+  grid-template-columns: repeat(3, 1fr);
+  /* 3 equal columns */
+  gap: 20px;
+  /* Space between grid items */
+  margin-top: 20px;
+}
+
+.user-profile {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-profile img {
+  display: block;
+  margin: 0 auto 15px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.user-profile h2 {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.user-profile p {
+  margin: 5px 0;
+}
+
+.user-profile a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.user-profile a:hover {
+  text-decoration: underline;
+}
