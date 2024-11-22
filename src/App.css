@@ -170,9 +170,9 @@
 }
 
 .modal-actions button:last-child {
-  background-color: #f44336;
+  background-color: #0056b3;
 }
 
 .modal-actions button:last-child:hover {
-  background-color: #d32f2f;
+  background-color: #0056b3;
 }

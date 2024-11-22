@@ -84,10 +84,8 @@ const UserProfile = ({ user, onDelete, onSave }) => {
       {isEditModalOpen && (
         <div className="modal">
           <div className="modal-content">
-           
             <h3>Basic Modal</h3>
 
-           
             <label>
               Name:
               <input
@@ -129,8 +127,8 @@ const UserProfile = ({ user, onDelete, onSave }) => {
             </label>
 
             <div className="modal-actions">
-              <button onClick={handleSave}>Save</button>
               <button onClick={() => setIsEditModalOpen(false)}>Cancel</button>
+              <button onClick={handleSave}>Ok</button>
             </div>
           </div>
         </div>
