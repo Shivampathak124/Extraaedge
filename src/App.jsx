@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setUsers, setLoading } from "./redux/actions";
 
 import UserProfile from "./components/UserProfile";
 import LoadingSpinner from "./components/LoadingSpinner";
-import "./app.css"
+
+import "./app.css";
 
 const App = () => {
   const users = useSelector((state) => state.users);
@@ -12,17 +13,37 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch user data
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(setUsers(data)); // Update users in the store
-      })
-      .catch((error) => {
-        console.error('Error fetching users:', error);
-        dispatch(setLoading(false)); // Stop loading even if there's an error
-      });
+    const fetchUsers = async () => {
+      dispatch(setLoading(true)); 
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+        );
+        const data = await response.json();
+        dispatch(setUsers(data)); 
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        dispatch(setLoading(false)); 
+      }
+    };
+
+    fetchUsers();
   }, [dispatch]);
+
+
+  const handleSaveUser = (updatedUser) => {
+  
+    dispatch(
+      setUsers(
+        users.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+      )
+    );
+  };
+
+  const handleDeleteUser = (userId) => {
+   
+    dispatch(setUsers(users.filter((user) => user.id !== userId)));
+  };
 
   return (
     <div className="app-container">
@@ -32,7 +53,12 @@ const App = () => {
       ) : (
         <div className="user-profiles">
           {users.map((user) => (
-            <UserProfile key={user.id} user={user} />
+            <UserProfile
+              key={user.id}
+              user={user}
+              onSave={handleSaveUser} 
+              onDelete={handleDeleteUser} 
+            />
           ))}
         </div>
       )}
